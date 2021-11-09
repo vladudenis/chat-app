@@ -1,5 +1,5 @@
 # Chat App
-A socket.io messaging app.
+A socket.io chat app.
 
 ## To Do
   - Broadcast a message to connected users when someone connects or disconnects.
