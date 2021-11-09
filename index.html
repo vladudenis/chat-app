@@ -31,6 +31,7 @@
       const form = document.getElementById('form');
       const input = document.getElementById('input');
 
+      // Submitting the form emits a message to the HTTP server through a socket
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         if (input.value) {
@@ -39,7 +40,8 @@
         }
       });
 
-      socket.on('msg', function(msg) {
+      // Receive an emitted message from the HTTP server and render it to the HTML document
+      socket.on('message', function(msg) {
         const item = document.createElement('li');
         item.textContent = msg;
         messages.appendChild(item);

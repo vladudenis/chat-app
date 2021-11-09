@@ -10,15 +10,18 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
+// Listen to established WebSocket connections with a client
 io.on('connection', function UserConnected(socket) {
   console.log('A user connected.');
 
+  // Log a client disconnect event to the console
   socket.on('disconnect', () => {
-    console.log('user disconnected');
+    console.log('A User disconnected.');
   });
 
+  // Emit a message received by a client to all connected clients
   socket.on('msg', (msg) => {
-    io.emit('msg', msg);
+    io.emit('message', msg);
   });
 });
 
