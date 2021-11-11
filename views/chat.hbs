@@ -1,0 +1,34 @@
+<div class="chat">
+    <div class="modal fade" id="checkinModal" tabindex="-1" aria-labelledby="checkinModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="checkinModalLabel">Identify Yourself!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="checkinForm" action="">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="checkinInput" autocomplete="off" placeholder="Enter a username..." required>
+                        </div>
+                        <span class="modal-buttons">
+                            <button class="btn btn-primary" type="submit">Start Chatting</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue as Guest</button>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul id="messages"></ul>
+    <form id="form" action="">
+        <div class="form-group">
+            {{> username }}
+            <input type="text" class="form-control" id="input" autocomplete="off">
+            <button class="btn btn-dark" type="submit">Send</button>
+        </div>
+    </form>
+</div>
