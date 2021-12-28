@@ -4,7 +4,7 @@ $(document).ready(() => {
   const $checkinModal = $('#checkinModal');
   const $checkinForm = $('#checkinForm');
   const $checkinInput = $('#checkinInput');
-  let username = '';
+  let username = 'Guest';
 
   $checkinModal.modal('show');
   $checkinForm.on('submit', function(e){
@@ -23,7 +23,7 @@ $(document).ready(() => {
   $form.on('submit', function(e) {
     e.preventDefault();
     if ($input.val()) {
-      socket.emit('msg', $input.val());
+      socket.emit('msg', `${username}: ${$input.val()}`);
       $input.val('');
     }
   });

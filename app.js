@@ -24,10 +24,23 @@ app.get('/', (req, res) => {
 
 // Listen to established WebSocket connections with a client
 io.on('connection', function UserConnected(socket) {
+  socket.join('standard-chatroom');
+  console.log(io.of('/').adapter.rooms.get('standard-chatroom').size);
+
+  if (io.of('/').adapter.rooms.get('standard-chatroom').size > 1) {
+    io.to('standard-chatroom').emit('message', `User ${socket.id} connected.`);
+  } else {
+    io.in('standard-chatroom').emit('message', 'You connected to the chat room.');
+  }
+
   console.log('A user connected.');
 
   // Log a client disconnect event to the console
   socket.on('disconnect', () => {
+    io.to('standard-chatroom').emit('message', `User ${socket.id} disconnected.`);
+
+    socket.leave('standard-chatroom');
+
     console.log('A User disconnected.');
   });
 
